@@ -2,7 +2,9 @@
 
 namespace UniSharp\LaravelFilemanager\Exceptions;
 
-class InvalidExtensionException extends \Exception
+use Exception;
+
+class InvalidExtensionException extends Exception
 {
     public function __construct()
     {

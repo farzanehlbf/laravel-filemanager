@@ -91,7 +91,7 @@ class ItemsController extends LfmController
             } else {
                 event(new FileWasMoving($old_path, $new_file->path()));
             }
-        };
+        }
 
         return parent::$success_response;
     }

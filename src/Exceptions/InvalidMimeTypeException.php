@@ -2,7 +2,9 @@
 
 namespace UniSharp\LaravelFilemanager\Exceptions;
 
-class InvalidMimeTypeException extends \Exception
+use Exception;
+
+class InvalidMimeTypeException extends Exception
 {
     public function __construct($mimetype)
     {

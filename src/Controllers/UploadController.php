@@ -2,9 +2,10 @@
 
 namespace UniSharp\LaravelFilemanager\Controllers;
 
+use Error;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
-use UniSharp\LaravelFilemanager\Lfm;
 
 class UploadController extends LfmController
 {
@@ -34,14 +35,14 @@ class UploadController extends LfmController
                 $this->lfm->validateUploadedFile($file);
 
                 $new_filename = $this->lfm->upload($file);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 Log::error($e->getMessage(), [
                     'file' => $e->getFile(),
                     'line' => $e->getLine(),
                     'trace' => $e->getTraceAsString()
                 ]);
                 array_push($error_bag, $e->getMessage());
-            } catch (\Error $e) {
+            } catch (Error $e) {
                 Log::error($e->getMessage(), [
                     'file' => $e->getFile(),
                     'line' => $e->getLine(),

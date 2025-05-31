@@ -2,15 +2,15 @@
 
 namespace UniSharp\LaravelFilemanager;
 
+use Exception;
 use Illuminate\Container\Container;
 use Intervention\Image\Facades\Image as InterventionImageV2;
 use Intervention\Image\Laravel\Facades\Image as InterventionImageV3;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Log;
 use UniSharp\LaravelFilemanager\Events\FileIsUploading;
 use UniSharp\LaravelFilemanager\Events\FileWasUploaded;
 use UniSharp\LaravelFilemanager\Events\ImageIsUploading;
 use UniSharp\LaravelFilemanager\Events\ImageWasUploaded;
-use UniSharp\LaravelFilemanager\LfmUploadValidator;
 
 class LfmPath
 {
@@ -216,7 +216,7 @@ class LfmPath
 
     public function error($error_type, $variables = [])
     {
-        throw new \Exception($this->helper->error($error_type, $variables));
+        throw new Exception($this->helper->error($error_type, $variables));
     }
 
     // Upload section
@@ -231,8 +231,8 @@ class LfmPath
             $this->setName($new_file_name)->storage->save($file);
 
             $this->generateThumbnail($new_file_name);
-        } catch (\Exception $e) {
-            \Log::info($e);
+        } catch (Exception $e) {
+            Log::info($e);
             return $this->error('invalid');
         }
         event(new FileWasUploaded($new_file_path));

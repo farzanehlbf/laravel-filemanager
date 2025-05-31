@@ -2,6 +2,7 @@
 
 namespace UniSharp\LaravelFilemanager\Controllers;
 
+use Exception;
 use UniSharp\LaravelFilemanager\Events\FolderIsCreating;
 use UniSharp\LaravelFilemanager\Events\FolderWasCreated;
 
@@ -56,7 +57,7 @@ class FolderController extends LfmController
             } else {
                 $this->lfm->setName($folder_name)->createFolder();
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
 

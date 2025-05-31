@@ -2,7 +2,9 @@
 
 namespace UniSharp\LaravelFilemanager\Exceptions;
 
-class DuplicateFileNameException extends \Exception
+use Exception;
+
+class DuplicateFileNameException extends Exception
 {
     public function __construct()
     {

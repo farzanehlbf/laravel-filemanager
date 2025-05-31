@@ -2,7 +2,9 @@
 
 namespace UniSharp\LaravelFilemanager\Exceptions;
 
-class FileFailedToUploadException extends \Exception
+use Exception;
+
+class FileFailedToUploadException extends Exception
 {
     public function __construct($error_code)
     {

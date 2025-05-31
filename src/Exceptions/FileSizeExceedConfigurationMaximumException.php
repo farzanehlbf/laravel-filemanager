@@ -2,7 +2,9 @@
 
 namespace UniSharp\LaravelFilemanager\Exceptions;
 
-class FileSizeExceedConfigurationMaximumException extends \Exception
+use Exception;
+
+class FileSizeExceedConfigurationMaximumException extends Exception
 {
     public function __construct($file_size)
     {

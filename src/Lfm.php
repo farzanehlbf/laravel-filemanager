@@ -2,6 +2,7 @@
 
 namespace UniSharp\LaravelFilemanager;
 
+use Exception;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -274,7 +275,7 @@ class Lfm
      */
     public function error($error_type, $variables = [])
     {
-        throw new \Exception(trans(self::PACKAGE_NAME . '::lfm.error-' . $error_type, $variables));
+        throw new Exception(trans(self::PACKAGE_NAME . '::lfm.error-' . $error_type, $variables));
     }
 
     /**
