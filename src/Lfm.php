@@ -234,6 +234,10 @@ class Lfm
      */
     public function translateFromUtf8($input)
     {
+        if (is_array($input)) {
+
+            $input = implode(',', $input);
+        }
         if ($this->isRunningOnWindows()) {
             $input = iconv('UTF-8', mb_detect_encoding($input), $input);
         }

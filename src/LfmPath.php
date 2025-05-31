@@ -5,12 +5,13 @@ namespace UniSharp\LaravelFilemanager;
 use Exception;
 use Illuminate\Container\Container;
 use Intervention\Image\Facades\Image as InterventionImageV2;
-use Intervention\Image\Laravel\Facades\Image as InterventionImageV3;
 use Log;
 use UniSharp\LaravelFilemanager\Events\FileIsUploading;
 use UniSharp\LaravelFilemanager\Events\FileWasUploaded;
 use UniSharp\LaravelFilemanager\Events\ImageIsUploading;
 use UniSharp\LaravelFilemanager\Events\ImageWasUploaded;
+
+//use Intervention\Image\Laravel\Facades\Image as InterventionImageV3;
 
 class LfmPath
 {
@@ -330,10 +331,10 @@ class LfmPath
                 ->fit($thumbWidth, $thumbHeight)
                 ->stream()
                 ->detach();
-        } else {
-            $encoded_image = InterventionImageV3::read($original_image->get())
-                ->cover($thumbWidth, $thumbHeight)
-                ->encodeByMediaType();
+//        } else {
+//            $encoded_image = InterventionImageV3::read($original_image->get())
+//                ->cover($thumbWidth, $thumbHeight)
+//                ->encodeByMediaType();
         }
 
 
